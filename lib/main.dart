@@ -1,7 +1,6 @@
+import 'package:bp_checker_front/screens/add_page.dart';
 import 'package:bp_checker_front/screens/home.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future main() async {
@@ -14,10 +13,13 @@ class BpChecker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BP Chekcer_v1',
-      home: BPChecker(),
+      home: const BPChecker(),
+      routes: {
+        '/add': (context) => const AddPage(),
+      },
     );
   }
 }

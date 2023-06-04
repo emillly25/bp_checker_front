@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -74,14 +75,17 @@ class Home extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   '평균 120 - 125',
                   style: TextStyle(
                       color: Color.fromRGBO(0, 0, 0, 0.3),
                       fontSize: 16,
                       fontWeight: FontWeight.w400),
-                )
+                ),
+                SfSparkBarChart(
+                  data: const [90, 80, 50],
+                ),
               ],
             ),
           ),
@@ -227,18 +231,16 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: 60,
-        height: 60,
-        decoration: BoxDecoration(
-          color: const Color(0xFF6CD2CD),
-          borderRadius: BorderRadius.circular(100),
-        ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF6CD2CD),
         child: const Icon(
           Icons.add,
           size: 30,
           color: Color(0xFFFFFFFF),
         ),
+        onPressed: () {
+          Navigator.pushNamed(context, '/add');
+        },
       ),
     );
   }
