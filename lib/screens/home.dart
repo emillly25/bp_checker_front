@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,147 +6,238 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFC8FAEA),
       appBar: AppBar(
-        title: const Text('혈압 측정'),
-        backgroundColor: Colors.lightGreen,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: ListView(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  iconSize: 70,
-                  color: Colors.green,
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_left),
-                ),
-                const SizedBox(width: 8),
-                const Text(
-                  '5/15',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 8),
-                IconButton(
-                  iconSize: 70,
-                  color: Colors.green,
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_right),
-                )
-              ],
-            ),
-            Container(
-              height: 48,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('시간',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text('수축기(H)',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                      SizedBox(width: 5),
-                      Text('이완기(L)',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                      SizedBox(width: 5),
-                      Text('맥박',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold))
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              decoration: BoxDecoration(
-                // color: Colors.amber,
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: ListView.separated(
-                  itemBuilder: (context, idx) => Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                '10:00',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 26),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: const [
-                                  Text(
-                                    '120',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 27),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    '80',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 27),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    '80',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 27),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                  separatorBuilder: (ctx, idx) => const SizedBox(height: 3),
-                  itemCount: 3),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        height: 50,
-        color: Colors.lightGreen,
-        child: const Center(
-          child: ListTile(
-            leading: Icon(Icons.star),
-            title: Text(
-              '통계',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Colors.white),
+        title: const Center(
+          child: Text(
+            '측정 기록',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFFFFFFF),
             ),
           ),
         ),
+        backgroundColor: const Color(0xFF6CD2CD),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: const Color(0xFF6CD2CD),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '홈',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.insights),
+            label: '통계',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '앱 설정',
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: 60,
+            color: const Color(0xFFFFFFFF),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                ),
+                const Text(
+                  '오늘',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.teal,
+            height: 240,
+            width: double.maxFinite,
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: const [
+                Text(
+                  '평균 120 - 125',
+                  style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                )
+              ],
+            ),
+          ),
+          Container(
+            height: 50,
+            width: double.maxFinite,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text(
+                  '입력 시간',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                ),
+                Text(
+                  '수축',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                ),
+                Text(
+                  '확장',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                ),
+                Text(
+                  '맥박',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(0, 0, 0, 0.3),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) => Container(
+                height: 88,
+                color: const Color(0xFFFFFFFF),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: const [
+                        Text(
+                          '오전',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.4),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                          '10:00',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.4),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '90',
+                          style: TextStyle(
+                            color: Color(0xFF18D79D),
+                            fontSize: 32,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'mmHg',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '118',
+                          style: TextStyle(
+                            color: Color(0xFFF69A73),
+                            fontSize: 32,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'mmHg',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: const [
+                        Text(
+                          '100',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.8),
+                            fontSize: 32,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'bpm',
+                          style: TextStyle(
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              separatorBuilder: (ctx, idx) => const SizedBox(height: 4),
+              itemCount: 5,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: Container(
         width: 60,
         height: 60,
         decoration: BoxDecoration(
-          color: Colors.lightGreen,
+          color: const Color(0xFF6CD2CD),
           borderRadius: BorderRadius.circular(100),
         ),
         child: const Icon(
           Icons.add,
           size: 30,
-          color: Colors.white,
+          color: Color(0xFFFFFFFF),
         ),
       ),
     );
